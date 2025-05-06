@@ -1,0 +1,108 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "userId": "dlwlanr0916",
+      "userPwd": "wlanr1506!",
+      "name": "이지묵",
+      "nickname": "리지묵",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 26,
+      "isOnline": true
+    },
+    {
+      "id": "2",
+      "userId": "admin",
+      "userPwd": "1234",
+      "name": "방장",
+      "nickname": "아저씨",
+      "gender": "남성",
+      "genre": "시뮬레이션",
+      "age": "40",
+      "isOnline": true
+    },
+    {
+      "id": "3",
+      "userId": "user1111",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "koom",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 20,
+      "isOnline": false
+    },
+    {
+      "id": "4",
+      "userId": "user1111",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "koom",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 20,
+      "isOnline": false
+    },
+    {
+      "id": "5",
+      "userId": "user1111",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "koom",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 20,
+      "isOnline": false
+    },
+    {
+      "id": "6",
+      "userId": "user1111",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "koom",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 20,
+      "isOnline": false
+    },
+    {
+      "id": "7",
+      "userId": "user1111",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "koom",
+      "gender": "남성",
+      "genre": "FPS",
+      "age": 20,
+      "isOnline": false
+    },
+    {
+      "id": "8",
+      "userId": "1124",
+      "userPwd": "1213312",
+      "name": "124",
+      "nickname": "124",
+      "gender": "여성",
+      "genre": "스포츠",
+      "age": 124,
+      "isOnline": true
+    }
+  ],
+  "boards": [
+    {
+      "id": "1",
+      "title": "50조 팀추천",
+      "content": "호날두\n손흥민",
+      "game": "피파",
+      "writer": "dlwlanr0916"
+    },
+    {
+      "id": "2",
+      "title": "피파 패치 내역입니다!",
+      "game": "피파",
+      "content": "하이",
+      "writer": "admin"
+    }
+  ]
+}
