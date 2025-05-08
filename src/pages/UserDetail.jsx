@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 800px;
 `;
-
 const FormContainer = styled.form`
   width: 700px;
   margin: 50px auto;
@@ -19,7 +18,6 @@ const FormContainer = styled.form`
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
-
 const Input = styled.input`
   width: 100%;
   height: 50px;
@@ -45,7 +43,6 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-
   &:hover {
     background-color: #45a049;
   }
@@ -54,7 +51,6 @@ const SubmitButton = styled.button`
 const UserDetail = () => {
   const { currentUser, updateUser } = userStore(); // zustand store에서 사용자 정보 가져오기
   const navigate = useNavigate();
-
   const [isEditing, setIsEditing] = useState(false); // 수정 상태 추가
   const [updatedName, setUpdatedName] = useState(currentUser?.name || '');
   const [updatedAge, setUpdatedAge] = useState(currentUser?.age || '');
@@ -93,7 +89,6 @@ const UserDetail = () => {
           readOnly={!isEditing}
           placeholder="이름"
         />
-
         <Input
           type="number"
           value={isEditing ? updatedAge : currentUser?.age}
@@ -101,9 +96,6 @@ const UserDetail = () => {
           readOnly={!isEditing}
           placeholder="나이"
         />
-
-       
-
         <label>
           <input
             type="checkbox"
@@ -118,7 +110,6 @@ const UserDetail = () => {
           <SubmitButton type="button" onClick={() => navigate('/')}>
             뒤로가기
           </SubmitButton>
-
           {isEditing ? (
             <>
               <SubmitButton type="button" onClick={handleUpdate}>

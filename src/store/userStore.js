@@ -8,7 +8,6 @@ const userStore = create((set, get) => ({
   isLoggedIn: false, // 로그인 상태
   currentUser: null, // 로그인한 사용자 정보
 
-
   // 사용자 데이터 가져오기
   getUsers: async () => {
     set({ loading: true, error: null });
@@ -22,17 +21,24 @@ const userStore = create((set, get) => ({
 
   // 사용자 추가하기
   addUser: async (newUser) => {
-    const response = await axios.get('http://localhost:3005/users');
-    const users = response.data;
-    const maxId = users.length > 0 ? Math.max(...users.map((u) => u.id)) : 0;
-
-    const userToAdd = {
-      ...newUser,
-      id: (maxId + 1).toString(),// 고유 id 생성
-    };
-
-    await axios.post('http://localhost:3005/users', userToAdd);
+    set({ loading: true, error: null }); // 로딩 시작
+    try {
+      const response = await axios.get('http://localhost:3005/users');
+      const users = response.data;
+      const maxId = users.length > 0 ? Math.max(...users.map((u) => u.id)) : 0;
+  
+      const userToAdd = {
+        ...newUser,
+        id: (maxId + 1).toString(),
+      };
+  
+      await axios.post('http://localhost:3005/users', userToAdd);
+      set({ loading: false }); // 로딩 끝
+    } catch (error) {
+      set({ loading: false, error: error.message });
+    }
   },
+  
 
   // 사용자 삭제하기
   deleteUser: async (id) => {
@@ -62,6 +68,7 @@ const userStore = create((set, get) => ({
         loading: false,
       }));
     } catch (error) {
+      console.log(error);
       set({ error: '사용자 수정 실패', loading: false });
     }
   },
@@ -76,6 +83,7 @@ const userStore = create((set, get) => ({
         users = response.data;
         set({ users });
       } catch (error) {
+        console.log(error);
         set({ error: '서버 연결 실패', loading: false });
         return false; // 실패 반환
       }

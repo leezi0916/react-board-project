@@ -6,13 +6,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { ClipLoader } from "react-spinners";
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 800px;
 `;
-
 const FormContainer = styled.form`
   max-width: 500px;
   margin: 50px auto;
@@ -21,7 +22,6 @@ const FormContainer = styled.form`
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
-
 const Input = styled.input`
   width: 100%;
   height: 50px;
@@ -38,20 +38,17 @@ const Input = styled.input`
     border-color: #174252;
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
   }
-
   &::placeholder {
     color: #adb5bd; /* 원하는 placeholder 색상 */
     font-size: 15px;
   }
 `;
-
 const Label = styled.label`
   display: block;
   margin-top: 20px;
   font-size: 14px;
   font-weight: bold;
 `;
-
 const SubmitButton = styled.button`
   width: 100%;
   padding: 12px;
@@ -67,6 +64,7 @@ const SubmitButton = styled.button`
     background-color: #45a049;
   }
 `;
+
 const schema = yup.object().shape({
   userId: yup.string().required('아이디를 입력하세요.'),
   userPwd: yup.string().min(4, '비밀번호는 4자 이상이어야 합니다.').required('비밀번호를 입력하세요.'),
@@ -82,7 +80,7 @@ const schema = yup.object().shape({
 });
 
 const UserRegistration = () => {
-  const { addUser } = userStore();
+  const { addUser ,loading} = userStore();
   const navigate = useNavigate();
 
   const {
@@ -105,13 +103,18 @@ const UserRegistration = () => {
       age: parseInt(data.age),
       isOnline: watch('isOnline') || false,
     };
-
     await addUser(newUser);
     toast.success("회원가입 성공");
-    
     navigate('/');
   };
 
+  if (loading) {
+    return (
+      <Wrapper>
+        <ClipLoader color="#36d7b7" size={80} />
+      </Wrapper>
+    );
+  }
   return (
     <Wrapper>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>

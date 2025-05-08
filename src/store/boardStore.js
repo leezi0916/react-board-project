@@ -60,6 +60,7 @@ const boardStore = create((set) => ({
         ),
       }));
     } catch (error) {
+      console.log(error);
       set({ error: '게시글 수정 실패' });
     }
   },

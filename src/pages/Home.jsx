@@ -10,13 +10,13 @@ import { FadeLoader } from 'react-spinners';
 import { FaSquareSteam } from 'react-icons/fa6';
 import { ImUser } from "react-icons/im";
 import { toast } from 'react-toastify';
+
 const Wrapper = styled.div`
   width: 70%;
   height: 100%;
   display: flex;
   padding: 70px;
   gap: 20px;
-  
 `;
 const AdContainer = styled.div`
   width: 100%;
@@ -38,7 +38,6 @@ const UserContainer = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
-
 const BoardHeader = styled.div`
   width: 100%;
   background: #182331;
@@ -46,7 +45,6 @@ const BoardHeader = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const UserHeader = styled.div`
   width: 100%;
   background: #182331;
@@ -54,13 +52,11 @@ const UserHeader = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const AdList = styled.div`
   width: 100%;
   height: 100%;
   background: #213e59;
   border-radius: 20px;
-
   img {
     border-radius: 30px;
     padding: 20px;
@@ -81,7 +77,6 @@ const BoardList = styled.div`
   background: #213e59;
   width: 100%;
 `;
-
 const UserList = styled.div`
   width: 100%;
   height: 380px;
@@ -92,7 +87,6 @@ const UserList = styled.div`
     list-style: none;
   }
 `;
-
 const LoginContainer = styled.div`
   width: 100%;
   height: 320px;
@@ -104,7 +98,6 @@ const LoginContainer = styled.div`
   align-items: center;
   padding: 10px;
 `;
-
 const Login = styled.div`
   width: 100%;
   max-width: 600px;
@@ -131,13 +124,11 @@ const InputField = styled.input`
     border-color: #174252;
     box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
   }
-
   &::placeholder {
     color: #adb5bd; /* 원하는 placeholder 색상 */
     font-size: 15px;
   }
 `;
-
 const LoginButton = styled.button`
   flex: 1;
   height: 45px;
@@ -149,11 +140,9 @@ const LoginButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
   &:hover {
     background-color: #218838;
   }
-
   &:active {
     background-color: #1e7e34;
   }
@@ -169,16 +158,13 @@ const LogOutButton = styled.button`
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
-
   &:hover {
     background-color: #c82333;
   }
-
   &:active {
     background-color: #bd2130;
   }
 `;
-
 const Button = styled(Link)`
   flex: 1;
   height: 45px;
@@ -193,43 +179,36 @@ const Button = styled(Link)`
   align-items: center;
   text-decoration: none;
   transition: background-color 0.3s ease;
-
   &:hover {
     background-color: #218838;
   }
-
   &:active {
     background-color: #1e7e34;
   }
 `;
-
 const Id = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 `;
-
 const Pwd = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   align-items: center;
 `;
-
 const ButtonContainer = styled.div`
   display: flex;
   width: 100%;
   gap: 10px;
 `;
-
 const UserWrapper = styled.div`
   width: 100%;
 
   border-radius: 15px;
   overflow: hidden;
 `;
-
 const UserImg = styled.img`
   width: 150px;
   height: 150px;
@@ -248,30 +227,24 @@ const UserInfo = styled.div`
   align-items: center;
   gap: 10px;
 `;
-
 const UserInfo1 = styled.div`
 width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
   text-align: left;  /* 왼쪽 정렬 추가 */
-  
   h2 {
     font-size: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
     color: white;
-  
     width: auto;  /* 고정 너비를 없애서 글씨 길이에 맞게 조정 */
     white-space: normal; /* 줄바꿈 허용 */
     word-break: break-word; /* 단어가 길면 강제 줄바꿈 */
    
   }
 `;
-
-
-
 
 const Container = styled.div`
   display: flex;
@@ -352,7 +325,6 @@ const Home = () => {
           <LoginContainer>
             <Login>
             
-                
                 <UserInfo1>
                 <UserImg src="https://i.pinimg.com/736x/3c/bd/86/3cbd86e0fab831190029fee0ea5bb882.jpg"></UserImg>
                   <h2>
@@ -365,7 +337,6 @@ const Home = () => {
                   </h2>
                 </UserInfo1>
              
-
               <UserButton>
                 <Button to={'/board/'}>게시글 등록</Button>
                 <Button to={`/user/${currentUser.id}`}>마이페이지</Button>

@@ -14,7 +14,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 800px;
 `;
-
 const FormContainer = styled.form`
   width: 700px;
   margin: 50px auto;
@@ -23,7 +22,6 @@ const FormContainer = styled.form`
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
-
 const Input = styled.input`
   width: 100%;
   height: 50px;
@@ -39,7 +37,6 @@ const Input = styled.input`
     outline: none;
   }
 `;
-
 const SubmitButton = styled.button`
   width: 100%;
   padding: 12px;
@@ -50,12 +47,10 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-
   &:hover {
     background-color: #45a049;
   }
 `;
-
 const Textarea = styled.textarea`
   width: 100%;
   height: 300px;
@@ -102,7 +97,6 @@ const BoardEnrollForm = () => {
       ...data,
       writer: currentUser?.userId || '익명', // 로그인된 사용자 아이디 or '익명'
     };
-
     await addBoard(newBoard);
     toast.success("게시글 작성 성공");
     navigate('/');

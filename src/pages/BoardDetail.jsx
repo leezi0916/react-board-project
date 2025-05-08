@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   align-items: center;
   height: 800px;
 `;
-
 const FormContainer = styled.form`
   width: 700px;
   margin: 50px auto;
@@ -20,7 +19,6 @@ const FormContainer = styled.form`
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 `;
-
 const Input = styled.input`
   width: 100%;
   height: 50px;
@@ -36,7 +34,6 @@ const Input = styled.input`
     outline: none;
   }
 `;
-
 const SubmitButton = styled.button`
   width: 100%;
   padding: 12px;
@@ -47,12 +44,10 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-
   &:hover {
     background-color: #45a049;
   }
 `;
-
 const Textarea = styled.textarea`
   width: 100%;
   height: 300px;
@@ -69,7 +64,6 @@ const Textarea = styled.textarea`
     outline: none;
   }
 `;
-
 const ButtonGroup = styled.div`
   display: flex;
   justify-content: space-between;
@@ -81,7 +75,7 @@ const BoardDetail = () => {
   const { id } = useParams(); // 주소에서 id 가져오기
   const navigate = useNavigate();
   const { currentUser} = userStore();
-  const {boards, getBoards, deleteBoard, updateBoard} = boardStore();
+  const {boards, deleteBoard, updateBoard} = boardStore();
   const [board, setBoard] = useState(null);
   const [isEditing, setIsEditing] = useState(false); // 수정 상태 추가
   const [updatedTitle, setUpdatedTitle] = useState('');
@@ -124,7 +118,6 @@ const BoardDetail = () => {
         title: updatedTitle,
         game: updatedGame,
         content: updatedContent,
-        
       };
       await updateBoard(updatedBoard);
       setIsEditing(false);
@@ -142,7 +135,6 @@ const BoardDetail = () => {
       </Wrapper>
     );
   }
-
   return (
     <Wrapper>
       <FormContainer>
@@ -161,7 +153,6 @@ const BoardDetail = () => {
           onChange={(e) => setUpdatedGame(e.target.value)}
           readOnly={!isEditing}
         />
-       
         <Textarea
           value={isEditing ? updatedContent : board.content}
           onChange={(e) => setUpdatedContent(e.target.value)}

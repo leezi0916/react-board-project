@@ -12,18 +12,15 @@ const Card = styled.div`
   justify-content: space-between; /* 좌우 배치 */
   align-items: center;
   transition: box-shadow 0.3s ease;
-
   &:hover {
     background-color: #174252;
   }
 `;
-
 const UserInfo = styled.div`
   display: flex;
   flex-direction: column; /* 세로 정렬 */
   gap: 5px;
 `;
-
 const UserId = styled.div`
   font-weight: bold;
   font-size: 16px;
@@ -33,7 +30,6 @@ const UserId = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-
 const UserName = styled.div`
   font-size: 16px;
   color: #e5e5e5;
@@ -42,8 +38,7 @@ const UserName = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   font-weight: bold;
-`;
-
+`
 const UserOnline = styled.div`
   font-size: 18px;
   display: flex;

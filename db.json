@@ -2,107 +2,117 @@
   "users": [
     {
       "id": "1",
+      "userId": "admin",
+      "userPwd": "1234",
+      "name": "김사장",
+      "nickname": "관리자",
+      "gender": "남성",
+      "genre": "기타",
+      "age": 42,
+      "isOnline": true
+    },
+    {
+      "id": "2",
       "userId": "dlwlanr0916",
       "userPwd": "wlanr1506!",
       "name": "이지묵",
       "nickname": "리지묵",
       "gender": "남성",
-      "genre": "FPS",
+      "genre": "스포츠",
       "age": 26,
       "isOnline": true
     },
     {
-      "id": "2",
-      "userId": "admin",
-      "userPwd": "1234",
-      "name": "방장",
-      "nickname": "아저씨",
+      "id": "3",
+      "userId": "user01",
+      "userPwd": "1111",
+      "name": "김지묵",
+      "nickname": "김치",
       "gender": "남성",
-      "genre": "시뮬레이션",
-      "age": "40",
+      "genre": "FPS",
+      "age": 20,
       "isOnline": true
     },
     {
-      "id": "3",
-      "userId": "user1111",
-      "userPwd": "1111",
-      "name": "김지묵",
-      "nickname": "koom",
-      "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
-      "isOnline": false
-    },
-    {
       "id": "4",
-      "userId": "user1111",
-      "userPwd": "1111",
-      "name": "김지묵",
-      "nickname": "koom",
+      "userId": "user02",
+      "userPwd": "2222",
+      "name": "박지묵",
+      "nickname": "박쥐",
       "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
+      "genre": "시뮬레이션",
+      "age": 31,
       "isOnline": false
     },
     {
       "id": "5",
-      "userId": "user1111",
-      "userPwd": "1111",
-      "name": "김지묵",
-      "nickname": "koom",
-      "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
+      "userId": "user03",
+      "userPwd": "3333",
+      "name": "최지묵",
+      "nickname": "jimo",
+      "gender": "여성",
+      "genre": "MOBA",
+      "age": 18,
       "isOnline": false
     },
     {
       "id": "6",
-      "userId": "user1111",
-      "userPwd": "1111",
-      "name": "김지묵",
-      "nickname": "koom",
+      "userId": "user00",
+      "userPwd": "0000",
+      "name": "유지묵",
+      "nickname": "usy",
       "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
+      "genre": "기타",
+      "age": 31,
       "isOnline": false
     },
     {
       "id": "7",
-      "userId": "user1111",
-      "userPwd": "1111",
-      "name": "김지묵",
-      "nickname": "koom",
+      "userId": "user0000",
+      "userPwd": "0000",
+      "name": "김치묵",
+      "nickname": "김치",
       "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
-      "isOnline": false
-    },
-    {
-      "id": "8",
-      "userId": "1124",
-      "userPwd": "1213312",
-      "name": "124",
-      "nickname": "124",
-      "gender": "여성",
-      "genre": "스포츠",
-      "age": 124,
+      "genre": "MOBA",
+      "age": 31,
       "isOnline": true
     }
   ],
   "boards": [
     {
       "id": "1",
-      "title": "50조 팀추천",
-      "content": "호날두\n손흥민",
-      "game": "피파",
-      "writer": "dlwlanr0916"
+      "title": "롤 14.18패치 내역",
+      "game": "리그오브레전드",
+      "content": "완연한 봄과 더불어, 시즌 2에 오신 것을 환영합니다!\n시즌 2에서는 영혼의 꽃 축제 시기에 딱 맞춰 아이오니아로 떠납니다! 기념할 만한 내용이 많은 패치인 만큼, 전체 패치 노트를 읽고 자세한 내용을 확인해 보세요!\n이번 패치에서는 새로운 영혼의 꽃 맵, 고통의 아타칸, 공허 목표물 변경 사항, 소극적 고의로 죽어주기 감지 기능 개선, 신규 영혼의 꽃 스킨, 신규 배틀패스 등 다양한 대규모 변경 사항이 찾아옵니다!\n게임플레이 측면에서는 현상금, 챔피언 선택 시 포지션 교체, 회색 화면과 같은 몇 가지 체계의 편의성이 개선됩니다! 이와 더불어 영겁의 지팡이, 신속의 장화, 공생형 밑창의 지배력 약화, 불굴의 의지 상향, 무력행사 장화 업그레이드, 점화 업데이트는 물론 일반적인 라이브 챔피언 밸런스 변경 사항도 준비되어 있습니다.\n다른 패치 노트를 찾고 계신가요? 전략적 팀 전투 패치 노트는 여기에서 차원문을 넘어 확인해 주세요! ",
+      "writer": "admin"
     },
     {
       "id": "2",
-      "title": "피파 패치 내역입니다!",
-      "game": "피파",
-      "content": "하이",
+      "title": "5인큐 할 사람 급합!",
+      "game": "리그오브레전드",
+      "content": "저녁 먹고 8시까지 들어오세요~",
+      "writer": "dlwlanr0916"
+    },
+    {
+      "id": "3",
+      "title": "FC온라인 5/8 목 점검",
+      "game": "FC온라인",
+      "content": "안녕하세요. GM 비올라입니다.\n\n5/8(목) FC ONLINE, FC ONLINE M 정기점검이 진행되어 안내 드립니다. (PC/모바일 점검 시간 동일)\n\n \n\n■ 정기점검 내용\n\n1. 신규 포인트 마일스톤 이벤트가 진행될 예정입니다. 자세한 내용은 추후 공개되는 이벤트 페이지에서 확인하실 수 있습니다.\n\n2. [주말마다 24KB 8강 기회!] PC방 챌린지! 이벤트가 진행될 예정입니다. 자세한 내용은 공지사항(보러가기)를 통해 확인 부탁드립니다.\n\n3. 5/10(토) 1일간 FC PRO MASTERS 기념 특별 접속 이벤트가 진행될 예정입니다. 자세한 내용은 공지사항(보러가기)를 통해 확인 부탁드립니다.\n\n4. 넥슨 전체 서비스 점검\n\n5. 서버 재시작 작업",
       "writer": "admin"
+    },
+    {
+      "id": "4",
+      "title": "안녕하세요! ",
+      "game": "롤토체스",
+      "content": "잘 부탁드립니다",
+      "writer": "user01"
+    },
+    {
+      "id": "5",
+      "title": "50조 팀 추천좀",
+      "game": "FC온라인",
+      "content": "추천좀",
+      "writer": "dlwlanr0916"
     }
   ]
 }

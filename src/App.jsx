@@ -10,14 +10,15 @@ import BoardDetail from './pages/BoardDetail';
 import { RiSteamFill } from "react-icons/ri";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const AppContainer = styled.div`
   min-height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
 `;
-function App() {
 
+function App() {
 
   return (
     <BrowserRouter>
@@ -38,8 +39,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-  
-
 
 export default App
