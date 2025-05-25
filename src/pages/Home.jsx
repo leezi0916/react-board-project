@@ -8,7 +8,7 @@ import boardStore from '../store/boardStore';
 import { HiMiniUser } from 'react-icons/hi2';
 import { FadeLoader } from 'react-spinners';
 import { FaSquareSteam } from 'react-icons/fa6';
-import { ImUser } from "react-icons/im";
+import { ImUser } from 'react-icons/im';
 import { toast } from 'react-toastify';
 
 const Wrapper = styled.div`
@@ -228,21 +228,20 @@ const UserInfo = styled.div`
   gap: 10px;
 `;
 const UserInfo1 = styled.div`
-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  text-align: left;  /* 왼쪽 정렬 추가 */
+  text-align: left; /* 왼쪽 정렬 추가 */
   h2 {
     font-size: 20px;
     display: flex;
     align-items: center;
     gap: 8px;
     color: white;
-    width: auto;  /* 고정 너비를 없애서 글씨 길이에 맞게 조정 */
+    width: auto; /* 고정 너비를 없애서 글씨 길이에 맞게 조정 */
     white-space: normal; /* 줄바꿈 허용 */
     word-break: break-word; /* 단어가 길면 강제 줄바꿈 */
-   
   }
 `;
 
@@ -283,20 +282,19 @@ const Home = () => {
   //로그인
   const handleLogin = async () => {
     const result = await login(id, password);
-  
+
     if (result) {
-      toast.success("로그인 성공");
+      toast.success('로그인 성공');
       setId('');
       setPassword('');
     } else {
-      toast.error("로그인 실패: 아이디 또는 비밀번호를 확인하세요");
+      toast.error('로그인 실패: 아이디 또는 비밀번호를 확인하세요');
     }
   };
-  
 
   //로그아웃
   const handleLogout = () => {
-    toast.error("로그아웃 성공");
+    toast.error('로그아웃 성공');
     logout();
   };
 
@@ -314,7 +312,7 @@ const Home = () => {
           </BoardHeader>
           <BoardList>
             {boards.map((board) => (
-              <BoardCard key={board.id} board={board} />
+              <BoardCard key={board.board_no} board={board} />
             ))}
           </BoardList>
         </BoardContainer>
@@ -324,22 +322,21 @@ const Home = () => {
         {isLoggedIn ? (
           <LoginContainer>
             <Login>
-            
-                <UserInfo1>
+              <UserInfo1>
                 <UserImg src="https://i.pinimg.com/736x/3c/bd/86/3cbd86e0fab831190029fee0ea5bb882.jpg"></UserImg>
-                  <h2>
-                    <FaSquareSteam />
-                    {currentUser?.userId}
-                  </h2>
-                  <h2>
-                    <ImUser />
-                    {currentUser?.name}님
-                  </h2>
-                </UserInfo1>
-             
+                <h2>
+                  <FaSquareSteam />
+                  {currentUser?.user_id}
+                </h2>
+                <h2>
+                  <ImUser />
+                  {currentUser?.name}님
+                </h2>
+              </UserInfo1>
+
               <UserButton>
                 <Button to={'/board/'}>게시글 등록</Button>
-                <Button to={`/user/${currentUser.id}`}>마이페이지</Button>
+               <Button to={`/user/${currentUser.user_id}`}>마이페이지</Button>
                 <LogOutButton onClick={handleLogout}>로그아웃</LogOutButton>
               </UserButton>
             </Login>
@@ -380,7 +377,7 @@ const Home = () => {
           </UserHeader>
           <UserList>
             {users.map((user) => (
-              <UserCard key={user.id} user={user} />
+              <UserCard key={user.userId} user={user} />
             ))}
           </UserList>
         </UserWrapper>

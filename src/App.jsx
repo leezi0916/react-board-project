@@ -28,11 +28,11 @@ function App() {
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/user/:id" element={<UserDetail />} />
+            <Route path="/user/:userId" element={<UserDetail />} />
             <Route path="/user" element={<UserRegistration />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/board" element={<BoardEnrollForm />} />
-            <Route path="/board/:id" element={<BoardDetail />} />
+            <Route path="/board/:boardNo" element={<BoardDetail />} />
           </Routes>
         </AppContainer>
         <ToastContainer position='top-right' autoClose={2000}/>

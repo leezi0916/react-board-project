@@ -63,10 +63,10 @@ const UserDetail = () => {
   const handleUpdate = async () => {
     try {
       const updatedUser = {
-        ...currentUser,
+        user_id: currentUser.user_id, // userId 대신 user_id인지 확인
         name: updatedName,
         age: updatedAge,
-        isOnline: updatedIsOnline,
+        is_online: updatedIsOnline, // isOnline 대신 is_online인지 확인
       };
       await updateUser(updatedUser);
       setIsEditing(false);
@@ -92,7 +92,7 @@ const UserDetail = () => {
         <Input
           type="number"
           value={isEditing ? updatedAge : currentUser?.age}
-          onChange={(e) => setUpdatedAge(e.target.value)}
+          onChange={(e) => setUpdatedAge(Number(e.target.value))}
           readOnly={!isEditing}
           placeholder="나이"
         />

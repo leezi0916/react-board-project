@@ -52,7 +52,7 @@ const UserCard = ({ user }) => {
         <UserId>닉네임 : {user.nickname}</UserId>
         <UserName>선호 장르 : {user.genre}</UserName>
       </UserInfo>
-      <UserOnline>{user.isOnline ? <BsCircleFill color="green"/> : <BsCircleFill color="red" />}</UserOnline>
+      <UserOnline>{user.is_online ? <BsCircleFill color="green"/> : <BsCircleFill color="red" />}</UserOnline>
     </Card>
   );
 };

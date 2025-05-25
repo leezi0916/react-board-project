@@ -12,43 +12,33 @@ const userStore = create((set, get) => ({
   getUsers: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await axios.get('http://localhost:3005/users');
+      const response = await axios.get('http://localhost:8888/api/members');
+      set({ users: response.data, loading: false });
+    } catch (error) {
+      set({ loading: false, error: error.message });
+    }
+  },  
+
+  // 사용자 추가하기
+  addUser: async (newUser) => {
+    console.log(newUser);
+    set({ loading: true, error: null });
+    try {
+      await axios.post('http://localhost:8888/api/members', newUser);
+      const response = await axios.get('http://localhost:8888/api/members');
       set({ users: response.data, loading: false });
     } catch (error) {
       set({ loading: false, error: error.message });
     }
   },
 
-  // 사용자 추가하기
-  addUser: async (newUser) => {
-    set({ loading: true, error: null }); // 로딩 시작
-    try {
-      const response = await axios.get('http://localhost:3005/users');
-      const users = response.data;
-      const maxId = users.length > 0 ? Math.max(...users.map((u) => u.id)) : 0;
-  
-      const userToAdd = {
-        ...newUser,
-        id: (maxId + 1).toString(),
-      };
-  
-      await axios.post('http://localhost:3005/users', userToAdd);
-      set({ loading: false }); // 로딩 끝
-    } catch (error) {
-      set({ loading: false, error: error.message });
-    }
-  },
-  
-
   // 사용자 삭제하기
-  deleteUser: async (id) => {
+  deleteUser: async (userId) => {
     set({ loading: true, error: null });
-
     try {
-      await axios.delete(`http://localhost:3005/users/${id}`); 
-
+      await axios.delete(`http://localhost:8888/api/members/${userId}`);
       set((state) => ({
-        users: state.users.filter((user) => user.id !== id),
+        users: state.users.filter((user) => user.userId !== userId),
         loading: false,
       }));
     } catch (error) {
@@ -60,11 +50,12 @@ const userStore = create((set, get) => ({
   updateUser: async (updatedUser) => {
     set({ loading: true, error: null });
     try {
-      await axios.put(`http://localhost:3005/users/${updatedUser.id}`, updatedUser);
+      await axios.patch(`http://localhost:8888/api/members/${updatedUser.user_id}`, updatedUser);
       set((state) => ({
         users: state.users.map((user) =>
-          user.id === updatedUser.id ? updatedUser : user
+          user.userId === updatedUser.user_id ? updatedUser : user
         ),
+        currentUser: updatedUser,  // 현재 로그인한 사용자 정보도 갱신
         loading: false,
       }));
     } catch (error) {
@@ -73,39 +64,40 @@ const userStore = create((set, get) => ({
     }
   },
 
-  login: async (id, pwd) => {
-    set({ loading: true });
-  
-    let users = get().users;
-    if (users.length === 0) {
-      try {
-        const response = await axios.get('http://localhost:3005/users');
-        users = response.data;
-        set({ users });
-      } catch (error) {
-        console.log(error);
-        set({ error: '서버 연결 실패', loading: false });
-        return false; // 실패 반환
-      }
-    }
-  
-    const user = users.find((u) => u.userId === id && u.userPwd === pwd);
-  
-    if (user) {
-      set({ isLoggedIn: true, currentUser: user, error: null });
-      set({ loading: false });
-      return true; // 성공 반환
-    } else {
-      set({ isLoggedIn: false, currentUser: null, error: '아이디 또는 비밀번호가 틀렸습니다.' });
-      set({ loading: false });
-      return false; // 실패 반환
-    }
-  },
-   
+  // 로그인
+  // userStore.js 안의 login 함수 수정
+login: async (id, pwd) => {
+  set({ loading: true, error: null });
+
+  try {
+    const response = await axios.post('http://localhost:8888/api/members/login', {
+      user_id: id,
+      user_pwd: pwd,
+    });
+
+    const user = response.data;
+
+    set({
+      isLoggedIn: true,
+      currentUser: user,
+      loading: false,
+      error: null,
+    });
+    return true;
+  } catch (error) {
+    set({
+      isLoggedIn: false,
+      currentUser: null,
+      loading: false,
+      error: '아이디 또는 비밀번호가 틀렸습니다.',
+    });
+    return false;
+  }
+},
+
   logout: () => {
     set({ isLoggedIn: false, currentUser: null });
   },
-  
 }));
 
 export default userStore;

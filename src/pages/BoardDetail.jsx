@@ -72,34 +72,36 @@ const ButtonGroup = styled.div`
 `;
 
 const BoardDetail = () => {
-  const { id } = useParams(); // 주소에서 id 가져오기
+  const { boardNo } = useParams(); // id 대신 boardNo 사용
   const navigate = useNavigate();
-  const { currentUser} = userStore();
-  const {boards, deleteBoard, updateBoard} = boardStore();
+  const { currentUser } = userStore();
+  const { boards, deleteBoard, updateBoard } = boardStore();
   const [board, setBoard] = useState(null);
-  const [isEditing, setIsEditing] = useState(false); // 수정 상태 추가
+  const [isEditing, setIsEditing] = useState(false);
   const [updatedTitle, setUpdatedTitle] = useState('');
   const [updatedGame, setUpdatedGame] = useState('');
   const [updatedContent, setUpdatedContent] = useState('');
 
-  // 게시글이 바뀔 때마다 현재 board 설정
+  // 게시글 불러오기
   useEffect(() => {
-    const found = boards.find((b) => String(b.id) === String(id));
+    const found = boards.find((b) => String(b.board_no) === String(boardNo));
     if (found) {
       setBoard(found);
       setUpdatedTitle(found.title);
       setUpdatedGame(found.game);
       setUpdatedContent(found.content);
     }
-  }, [boards, id]);
+  }, [boards, boardNo]);
 
-  const isAuthor = String(currentUser?.userId) === String(board?.writer);
+  // 현재 사용자가 작성자인지 체크
+  const isAuthor = String(currentUser?.user_id) === String(board?.writer);
 
-  const handleDelete = async (id) => {
+  // 삭제 핸들러
+  const handleDelete = async (boardNo) => {
     if (window.confirm('게시글을 삭제하시겠습니까?')) {
       try {
-        await deleteBoard(id);
-        toast.success("게시글 삭제 성공!");
+        await deleteBoard(boardNo);
+        toast.success('게시글 삭제 성공!');
         navigate('/');
       } catch (error) {
         console.error('게시글 삭제 실패:', error);
@@ -107,21 +109,24 @@ const BoardDetail = () => {
     }
   };
 
+  // 수정 모드 토글
   const handleEditToggle = () => {
     setIsEditing(!isEditing);
   };
 
+  // 수정 완료 핸들러
   const handleUpdate = async () => {
     try {
       const updatedBoard = {
         ...board,
+        board_no: board.board_no,
         title: updatedTitle,
         game: updatedGame,
         content: updatedContent,
       };
       await updateBoard(updatedBoard);
       setIsEditing(false);
-      toast.success("게시글 수정 성공!");
+      toast.success('게시글 수정 성공!');
       navigate('/');
     } catch (error) {
       console.error('게시글 수정 실패:', error);
@@ -179,7 +184,7 @@ const BoardDetail = () => {
                   수정
                 </SubmitButton>
               )}
-              <SubmitButton type="button" onClick={() => handleDelete(board.id)}>
+              <SubmitButton type="button" onClick={() => handleDelete(board.board_no)}>
                 삭제
               </SubmitButton>
             </>

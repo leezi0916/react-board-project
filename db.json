@@ -1,7 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
       "userId": "admin",
       "userPwd": "1234",
       "name": "김사장",
@@ -12,69 +11,25 @@
       "isOnline": true
     },
     {
-      "id": "2",
+      "id": "3d08",
       "userId": "dlwlanr0916",
       "userPwd": "wlanr1506!",
       "name": "이지묵",
       "nickname": "리지묵",
       "gender": "남성",
-      "genre": "스포츠",
+      "genre": "FPS",
       "age": 26,
-      "isOnline": true
+      "isOnline": false
     },
     {
-      "id": "3",
+      "id": "1",
       "userId": "user01",
       "userPwd": "1111",
       "name": "김지묵",
       "nickname": "김치",
       "gender": "남성",
-      "genre": "FPS",
-      "age": 20,
-      "isOnline": true
-    },
-    {
-      "id": "4",
-      "userId": "user02",
-      "userPwd": "2222",
-      "name": "박지묵",
-      "nickname": "박쥐",
-      "gender": "남성",
-      "genre": "시뮬레이션",
-      "age": 31,
-      "isOnline": false
-    },
-    {
-      "id": "5",
-      "userId": "user03",
-      "userPwd": "3333",
-      "name": "최지묵",
-      "nickname": "jimo",
-      "gender": "여성",
-      "genre": "MOBA",
-      "age": 18,
-      "isOnline": false
-    },
-    {
-      "id": "6",
-      "userId": "user00",
-      "userPwd": "0000",
-      "name": "유지묵",
-      "nickname": "usy",
-      "gender": "남성",
-      "genre": "기타",
-      "age": 31,
-      "isOnline": false
-    },
-    {
-      "id": "7",
-      "userId": "user0000",
-      "userPwd": "0000",
-      "name": "김치묵",
-      "nickname": "김치",
-      "gender": "남성",
-      "genre": "MOBA",
-      "age": 31,
+      "genre": "스포츠",
+      "age": 12,
       "isOnline": true
     }
   ],
@@ -113,6 +68,21 @@
       "game": "FC온라인",
       "content": "추천좀",
       "writer": "dlwlanr0916"
+    },
+    {
+      "id": "9218",
+      "title": "ㅁㄴㅇㄹ",
+      "game": "ㅁㄴㅇㄹㅁㄴㄹㅇ",
+      "content": "ㅁㄹㅇㄴㅁㄹㄴㅇ",
+      "writer": "user01",
+      "boardNo": null
+    },
+    {
+      "id": "4e76",
+      "title": "asfd",
+      "game": "sadf",
+      "content": "fads",
+      "writer": "admin"
     }
   ]
 }

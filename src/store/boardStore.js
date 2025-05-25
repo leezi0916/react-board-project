@@ -13,7 +13,7 @@ const boardStore = create((set) => ({
     set({ loading: true, error: null });
 
     try {
-      const response = await axios.get('http://localhost:3005/boards');
+      const response = await axios.get('http://localhost:8888/api/boards');
       set({ boards: response.data, loading: false });
     } catch (error) {
       set({ loading: false, error: error.message });
@@ -21,46 +21,59 @@ const boardStore = create((set) => ({
   },
 
   addBoard: async (newBoard) => {
-    const response = await axios.get('http://localhost:3005/boards');
-    const boards = response.data;
-    const maxId = boards.length > 0 ? Math.max(...boards.map((b) => b.id)) : 0;
-
-    const boardToAdd = {
-      ...newBoard,
-      id: (maxId + 1).toString(),// 번호 자동 부여
-    };
-
-    await axios.post('http://localhost:3005/boards', boardToAdd);
+    const formData = new FormData();
+    Object.entries(newBoard).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+  
+    const response = await axios.post('http://localhost:8888/api/boards', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  
+    set((state) => ({
+      boards: [...state.boards, response.data],
+    }));
   },
+  
 
-  deleteBoard: async (id) => {
+  deleteBoard: async (boardNo) => {
     set({ loading: true, error: null });
-
     try {
-      console.log(`삭제 요청할 게시글 ID: ${id}`); 
-      await axios.delete(`http://localhost:3005/boards/${id}`);
-      console.log('삭제 성공');
-
+      await axios.delete(`http://localhost:8888/api/boards/${boardNo}`);
       set((state) => ({
-        boards: state.boards.filter((board) => board.id !== parseInt(id)),
+        boards: state.boards.filter((board) => board.board_no !== boardNo),
         loading: false,
       }));
     } catch (error) {
-      console.error('게시글 삭제 실패:', error);
+      set({ loading: false, error: error.message });
     }
   },
 
   // 게시글 수정하기
   updateBoard: async (updatedBoard) => {
     try {
-      await axios.put(`http://localhost:3005/boards/${updatedBoard.id}`, updatedBoard);
+      const formData = new FormData();
+  
+      // Object.entries()를 사용해 FormData에 키-값 추가
+      Object.entries(updatedBoard).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+  
+      await axios.patch(`http://localhost:8888/api/boards/${updatedBoard.board_no}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
       set((state) => ({
         boards: state.boards.map((board) =>
-          board.id === updatedBoard.id ? updatedBoard : board
+          board.board_no === updatedBoard.board_no ? updatedBoard : board
         ),
       }));
     } catch (error) {
-      console.log(error);
+      console.error(error);
       set({ error: '게시글 수정 실패' });
     }
   },

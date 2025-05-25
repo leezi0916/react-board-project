@@ -35,8 +35,8 @@ const Writer = styled.small`
 
 const BoardCard = ({ board }) => {
   return (
-    <Card to={`/board/${board.id}`}>
-      <No>{board.id}</No>
+    <Card to={`/board/${board.board_no}`}>
+      <No>{board.board_no}</No>
       <Title>{board.title}</Title>
       <Title>{board.game}</Title>
       <Writer>작성자: {board.writer || '익명'}</Writer>

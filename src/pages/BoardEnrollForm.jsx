@@ -76,6 +76,7 @@ const ButtonGroup = styled.div`
 
 const schema = yup.object().shape({
   title: yup.string().required('제목을 입력하세요.'),
+  game: yup.string().required('게임명을 입력하세요.'),
   content: yup.string().required('내용을 입력하세요.'),
 });
 
@@ -93,9 +94,13 @@ const BoardEnrollForm = () => {
   });
 
   const onSubmit = async (data) => {
+    if (!currentUser) {
+      toast.error("로그인 후 작성할 수 있습니다.");
+      return;
+    }
     const newBoard = {
       ...data,
-      writer: currentUser?.userId || '익명', // 로그인된 사용자 아이디 or '익명'
+      writer: currentUser?.user_id || '익명', // 로그인된 사용자 아이디 or '익명'
     };
     await addBoard(newBoard);
     toast.success("게시글 작성 성공");
@@ -106,7 +111,7 @@ const BoardEnrollForm = () => {
     <Wrapper>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
         <h2>게시글 작성</h2>
-        <Input value={currentUser?.userId || '로그인 필요'} readOnly />
+        <Input value={currentUser?.user_id || '로그인 필요'} readOnly />
         <Input placeholder="제목" {...register('title')} />
         {errors.title && <p style={{ color: 'red' }}>{errors.title.message}</p>}
         <Input placeholder="게임" {...register('game')} />
